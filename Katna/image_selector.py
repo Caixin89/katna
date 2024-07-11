@@ -202,7 +202,8 @@ class ImageSelector(object):
             variance_laplacian = self.__variance_of_laplacian__(img)
             variance_laplacians.append(variance_laplacian)
 
-        return variance_laplacians
+        return sorted(variance_laplacians)
+
 
     def __get_best_images_index_from_each_cluster__(
         self, files, files_clusters_index_array
@@ -233,7 +234,7 @@ class ImageSelector(object):
             selected_frame_of_current_cluster = curr_row[np.argmax(variance_laplacians)]
             filtered_items.append(selected_frame_of_current_cluster)
 
-        return filtered_items
+        return sorted(filtered_items)
 
     # def __getstate__(self):
     #     """Function to get the state of initialized class object and remove the pool object from it
